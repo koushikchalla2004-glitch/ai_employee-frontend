@@ -13,7 +13,7 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { toast } = useToast();
-  const WEBHOOK_URL = "https://koushikchall.app.n8n.cloud/webhook-test/submit";
+  const WEBHOOK_URL = "https://koushikchall.app.n8n.cloud/webhook-test/77f51e77-bef1-469b-aba2-8202f5478fba";
 
   useEffect(() => {
     const checkMobile = () => {
