@@ -12,6 +12,7 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { toast } = useToast();
+  const WEBHOOK_URL = "https://koushikchall.app.n8n.cloud/webhook-test/57101393-db62-4300-8725-2ddf9a0d8b1b";
 
   useEffect(() => {
     const checkMobile = () => {
@@ -47,14 +48,41 @@ const Index = () => {
     }
 
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-      toast({
-        title: "Analysis complete",
-        description: "Your data insights are ready to explore",
+    try {
+      const formData = new FormData();
+      formData.append("question", question);
+      formData.append("file", file);
+      formData.append("filename", file.name);
+      formData.append("mimetype", file.type || "application/octet-stream");
+      formData.append("size", String(file.size));
+
+      console.log("Sending to n8n webhook:", WEBHOOK_URL, {
+        question,
+        filename: file.name,
+        size: file.size,
+        mimetype: file.type,
       });
-    }, 2000);
+
+      await fetch(WEBHOOK_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData,
+      });
+
+      toast({
+        title: "Request sent",
+        description: "Your data was sent to n8n. Check Executions to view it.",
+      });
+    } catch (error) {
+      console.error("Error sending to n8n:", error);
+      toast({
+        title: "Error",
+        description: "Failed to send to n8n webhook. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
