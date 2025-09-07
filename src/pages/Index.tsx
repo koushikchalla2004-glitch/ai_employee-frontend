@@ -98,43 +98,43 @@ const Index = () => {
       <div className="absolute -top-[10%] -right-[5%] w-1/2 h-[70%] bg-pulse-gradient opacity-20 blur-3xl rounded-full"></div>
       <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-pulse-100/30 rounded-full blur-3xl -z-10"></div>
       
-      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-3xl mx-auto px-4 relative z-10">
         {/* Header with animation */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-6">
           <div 
-            className="pulse-chip mb-4 opacity-0 animate-fade-in inline-flex items-center"
+            className="pulse-chip mb-3 opacity-0 animate-fade-in inline-flex items-center text-sm"
             style={{ animationDelay: "0.1s" }}
           >
-            <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-pulse-500 text-white mr-2">
-              <Brain className="w-3 h-3" />
+            <span className="inline-flex items-center justify-center w-4 h-4 rounded-full bg-pulse-500 text-white mr-2">
+              <Brain className="w-2.5 h-2.5" />
             </span>
             <span>AI-Powered Analytics</span>
           </div>
           
           <h1 
-            className="section-title text-3xl sm:text-4xl lg:text-5xl xl:text-6xl leading-tight opacity-0 animate-fade-in mb-4" 
+            className="section-title text-2xl sm:text-3xl lg:text-4xl leading-tight opacity-0 animate-fade-in mb-3" 
             style={{ animationDelay: "0.3s" }}
           >
-            Your AI Data<br className="hidden sm:inline" />Analyst
+            Your AI Data Analyst
           </h1>
           
           <p 
             style={{ animationDelay: "0.5s" }} 
-            className="section-subtitle opacity-0 animate-fade-in text-gray-950 font-normal text-base sm:text-lg max-w-2xl mx-auto leading-relaxed"
+            className="section-subtitle opacity-0 animate-fade-in text-gray-950 font-normal text-sm sm:text-base max-w-xl mx-auto leading-relaxed"
           >
-            Transform your data into actionable insights. Upload any dataset and ask questions in natural language.
+            Transform your data into actionable insights. Upload any dataset and ask questions.
           </p>
         </div>
 
         {/* Main Interface */}
         <div 
-          className="glass-card p-6 sm:p-8 max-w-2xl mx-auto opacity-0 animate-fade-in"
+          className="glass-card p-4 sm:p-6 max-w-xl mx-auto opacity-0 animate-fade-in"
           style={{ animationDelay: "0.7s" }}
         >
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
             {/* Enhanced File Upload */}
-            <div className="space-y-3">
-              <label className="text-base font-semibold text-gray-900 block">
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-gray-900 block">
                 Upload your dataset
               </label>
               <div className="relative group">
@@ -145,7 +145,7 @@ const Index = () => {
                   onChange={handleFileUpload}
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                 />
-                <div className={`border-2 border-dashed rounded-2xl p-6 sm:p-8 text-center transition-all duration-300 ${
+                <div className={`border-2 border-dashed rounded-2xl p-4 text-center transition-all duration-300 ${
                   file 
                     ? 'border-pulse-500 bg-pulse-50/50' 
                     : 'border-gray-300 group-hover:border-pulse-400 group-hover:bg-pulse-50/30'
@@ -153,24 +153,24 @@ const Index = () => {
                   <div className="flex flex-col items-center">
                     {file ? (
                       <>
-                        <FileText className="h-10 w-10 text-pulse-500 mb-3" />
-                        <p className="text-base font-medium text-gray-900 mb-1">{file.name}</p>
-                        <p className="text-sm text-gray-600">File uploaded successfully</p>
+                        <FileText className="h-8 w-8 text-pulse-500 mb-2" />
+                        <p className="text-sm font-medium text-gray-900 mb-1">{file.name}</p>
+                        <p className="text-xs text-gray-600">File uploaded successfully</p>
                       </>
                     ) : (
                       <>
-                        <Upload className="h-10 w-10 text-gray-400 group-hover:text-pulse-500 mb-3 transition-colors" />
-                        <p className="text-base font-medium text-gray-900 mb-1">
+                        <Upload className="h-8 w-8 text-gray-400 group-hover:text-pulse-500 mb-2 transition-colors" />
+                        <p className="text-sm font-medium text-gray-900 mb-1">
                           Drop your data file here or click to browse
                         </p>
-                        <p className="text-sm text-gray-600 mb-3">
+                        <p className="text-xs text-gray-600 mb-2">
                           Supports CSV, Excel, JSON, TSV, and text files up to 10MB
                         </p>
-                        <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-500">
-                          <span className="px-2 py-1 bg-gray-100 rounded">.csv</span>
-                          <span className="px-2 py-1 bg-gray-100 rounded">.xlsx</span>
-                          <span className="px-2 py-1 bg-gray-100 rounded">.json</span>
-                          <span className="px-2 py-1 bg-gray-100 rounded">.txt</span>
+                        <div className="flex flex-wrap justify-center gap-1 text-xs text-gray-500">
+                          <span className="px-2 py-1 bg-gray-100 rounded text-xs">.csv</span>
+                          <span className="px-2 py-1 bg-gray-100 rounded text-xs">.xlsx</span>
+                          <span className="px-2 py-1 bg-gray-100 rounded text-xs">.json</span>
+                          <span className="px-2 py-1 bg-gray-100 rounded text-xs">.txt</span>
                         </div>
                       </>
                     )}
@@ -180,8 +180,8 @@ const Index = () => {
             </div>
 
             {/* Enhanced Question Input */}
-            <div className="space-y-3">
-              <label className="text-base font-semibold text-gray-900 block">
+            <div className="space-y-2">
+              <label className="text-sm font-semibold text-gray-900 block">
                 What insights are you looking for?
               </label>
               <Textarea
@@ -190,12 +190,11 @@ const Index = () => {
 Examples:
 • What are the main trends and patterns?
 • Which factors drive the highest performance?
-• Can you identify any outliers or anomalies?
-• What correlations exist between different variables?"
+• Can you identify any outliers or anomalies?"
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
-                rows={4}
-                className="resize-none text-sm leading-relaxed"
+                rows={3}
+                className="resize-none text-xs leading-relaxed"
               />
             </div>
 
@@ -203,7 +202,7 @@ Examples:
             <Button
               type="submit"
               disabled={!file || !question.trim() || isLoading}
-              className="w-full h-12 text-sm font-semibold transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+              className="w-full h-10 text-sm font-semibold transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
               style={{
                 backgroundColor: '#FE5C02',
                 borderRadius: '1440px',
@@ -212,13 +211,13 @@ Examples:
               }}
             >
               {isLoading ? (
-                <div className="flex items-center gap-3">
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                <div className="flex items-center gap-2">
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
                   <span>Analyzing your data...</span>
                 </div>
               ) : (
-                <div className="flex items-center gap-3">
-                  <Sparkles className="h-5 w-5" />
+                <div className="flex items-center gap-2">
+                  <Sparkles className="h-4 w-4" />
                   <span>Generate Insights</span>
                 </div>
               )}
@@ -228,35 +227,35 @@ Examples:
 
         {/* Enhanced Features Grid */}
         <div 
-          className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 opacity-0 animate-fade-in"
+          className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 opacity-0 animate-fade-in"
           style={{ animationDelay: "0.9s" }}
         >
           <div className="text-center group">
-            <div className="w-12 h-12 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-elegant group-hover:shadow-elegant-hover transition-all duration-300 group-hover:scale-110">
-              <Database className="h-6 w-6 text-pulse-500" />
+            <div className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-2 shadow-elegant group-hover:shadow-elegant-hover transition-all duration-300 group-hover:scale-110">
+              <Database className="h-5 w-5 text-pulse-500" />
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Smart Data Processing</h3>
-            <p className="text-gray-700 leading-relaxed text-sm">
+            <h3 className="text-base font-bold text-gray-900 mb-1">Smart Data Processing</h3>
+            <p className="text-gray-700 leading-relaxed text-xs">
               Automatically understands your data structure and prepares it for analysis
             </p>
           </div>
           
           <div className="text-center group">
-            <div className="w-12 h-12 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-elegant group-hover:shadow-elegant-hover transition-all duration-300 group-hover:scale-110">
-              <Brain className="h-6 w-6 text-pulse-500" />
+            <div className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-2 shadow-elegant group-hover:shadow-elegant-hover transition-all duration-300 group-hover:scale-110">
+              <Brain className="h-5 w-5 text-pulse-500" />
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Advanced AI Analytics</h3>
-            <p className="text-gray-700 leading-relaxed text-sm">
+            <h3 className="text-base font-bold text-gray-900 mb-1">Advanced AI Analytics</h3>
+            <p className="text-gray-700 leading-relaxed text-xs">
               Powered by cutting-edge AI to uncover deep insights and patterns
             </p>
           </div>
           
           <div className="text-center group">
-            <div className="w-12 h-12 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-elegant group-hover:shadow-elegant-hover transition-all duration-300 group-hover:scale-110">
-              <BarChart3 className="h-6 w-6 text-pulse-500" />
+            <div className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-2 shadow-elegant group-hover:shadow-elegant-hover transition-all duration-300 group-hover:scale-110">
+              <BarChart3 className="h-5 w-5 text-pulse-500" />
             </div>
-            <h3 className="text-lg font-bold text-gray-900 mb-2">Instant Visualizations</h3>
-            <p className="text-gray-700 leading-relaxed text-sm">
+            <h3 className="text-base font-bold text-gray-900 mb-1">Instant Visualizations</h3>
+            <p className="text-gray-700 leading-relaxed text-xs">
               Get beautiful charts and graphs along with detailed explanations
             </p>
           </div>
