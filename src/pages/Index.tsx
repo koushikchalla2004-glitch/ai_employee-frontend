@@ -9,10 +9,11 @@ import { useToast } from "@/hooks/use-toast";
 const Index = () => {
   const [file, setFile] = useState<File | null>(null);
   const [question, setQuestion] = useState("");
+  const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { toast } = useToast();
-  const WEBHOOK_URL = "https://koushikchall.app.n8n.cloud/webhook-test/57101393-db62-4300-8725-2ddf9a0d8b1b";
+  const WEBHOOK_URL = "https://koushikchall.app.n8n.cloud/webhook-test/submit";
 
   useEffect(() => {
     const checkMobile = () => {
@@ -38,10 +39,10 @@ const Index = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file || !question.trim()) {
+    if (!file || !question.trim() || !email.trim()) {
       toast({
         title: "Missing information",
-        description: "Please upload a file and enter your question",
+        description: "Please upload a file, enter your email, and enter your question",
         variant: "destructive",
       });
       return;
@@ -51,6 +52,7 @@ const Index = () => {
     try {
       const formData = new FormData();
       formData.append("question", question);
+      formData.append("email", email);
       formData.append("file", file);
       formData.append("filename", file.name);
       formData.append("mimetype", file.type || "application/octet-stream");
@@ -58,6 +60,7 @@ const Index = () => {
 
       console.log("Sending to n8n webhook:", WEBHOOK_URL, {
         question,
+        email,
         filename: file.name,
         size: file.size,
         mimetype: file.type,
@@ -179,6 +182,21 @@ const Index = () => {
               </div>
             </div>
 
+            {/* Email Input */}
+            <div className="space-y-1">
+              <label className="text-xs font-semibold text-gray-900 block">
+                Email address
+              </label>
+              <Input
+                type="email"
+                placeholder="Enter your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="text-xs h-8"
+                required
+              />
+            </div>
+
             {/* Enhanced Question Input */}
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-900 block">
@@ -201,7 +219,7 @@ Examples:
             {/* Enhanced Submit Button */}
             <Button
               type="submit"
-              disabled={!file || !question.trim() || isLoading}
+              disabled={!file || !question.trim() || !email.trim() || isLoading}
               className="w-full h-10 text-sm font-semibold transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
               style={{
                 backgroundColor: '#FE5C02',
